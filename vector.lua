@@ -16,10 +16,6 @@ function Vector:length()
 	return math.sqrt(self.x * self.x + self.y * self.y)
 end
 
-function Vector.__eq(lhs, rhs)
-	return (lhs.x == rhs.x) and (lhs.y == rhs.y)
-end
-
 function Vector:normalize()
 	local len = self:length()
 	self.x = self.x / len;
@@ -50,6 +46,10 @@ end
 function Vector.__div(lhs, rhs)
 	assert(type(lhs) ~= "number", "Can't divide number with Vector")
 	return Vector.new(lhs.x / rhs, lhs.y / rhs)
+end
+
+function Vector.__eq(lhs, rhs)
+	return (lhs.x == rhs.x) and (lhs.y == rhs.y)
 end
 
 return Vector
