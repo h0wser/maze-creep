@@ -26,6 +26,10 @@ function Map.new(width, height)
 		self.tiles[i][height] = 1
 	end
 
+	for i=3, width - 3 do
+		self.tiles[i][3] = 1
+	end
+
 	self.tileImage= love.graphics.newImage("assets/basic-tile.png")
 
 	return self
