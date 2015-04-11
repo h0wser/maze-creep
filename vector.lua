@@ -22,6 +22,12 @@ function Vector:normalize()
 	self.y = self.y / len;
 end
 
+function Vector:normalized()
+	local normalized = self:clone()
+	normalized:normalize()
+	return normalized
+end
+
 function Vector.dot(a, b)
 	return a.x * b.x + a.y * b.y
 end
@@ -50,6 +56,10 @@ end
 
 function Vector.__eq(lhs, rhs)
 	return (lhs.x == rhs.x) and (lhs.y == rhs.y)
+end
+
+function Vector:clone()
+	return Vector.new(self.x, self.y)
 end
 
 return Vector
