@@ -12,13 +12,29 @@ function Map.new(width, height)
 	for x=0, width do
 		self.tiles[x] = {}
 		for y=0, height do
-			self.tiles[x][y] = 1
+			self.tiles[x][y] = 0
 		end
+	end
+
+	for i=0, height do
+		self.tiles[0][i] = 1
+		self.tiles[width][i] = 1
+	end
+
+	for i=0, width do
+		self.tiles[i][0] = 1
+		self.tiles[i][height] = 1
 	end
 
 	self.tileImage= love.graphics.newImage("assets/basic-tile.png")
 
 	return self
+end
+
+function Map:isSolidTile(x, y)
+	if x > self.width or x < 1 or y > self.height or y < 1 then return true end
+	return self.tiles[x][y] ~= 0
+
 end
 
 function Map:draw()
