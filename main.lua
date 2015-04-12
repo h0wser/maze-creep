@@ -62,7 +62,7 @@ function love.update(dt)
 		player:update(dt, map)
 		enemy:update(dt, map, player)
 		enemy2:update(dt, map, player)
-		if (player.pos - enemy.pos):length() < 10 or (player.pos - enemy.pos):length() < 10 then 
+		if (player.pos - enemy.pos):length() < 10 or (player.pos - enemy2.pos):length() < 10 then 
 			playing = false
 			text = "You got rekt! Press enter to play again"
 			reset()
