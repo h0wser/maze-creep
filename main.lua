@@ -9,7 +9,7 @@ function love.load()
 	text = "Press enter to play!"
 
 	map = Map.new(22, 14)
-	love.window.setMode(1440, 960)
+	love.window.setMode(1104, 720)
 	love.window.setTitle("Maze Runner")
 
 	love.graphics.setBackgroundColor(33, 33, 33)
@@ -93,5 +93,5 @@ function love.draw()
 
 	love.graphics.setCanvas()
 
-	love.graphics.draw(canvas, 0, 0, 0, 4, 4)
+	love.graphics.draw(canvas, 0, 0, 0, 3, 3)
 	end

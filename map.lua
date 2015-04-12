@@ -30,6 +30,9 @@ function Map.new(width, height)
 		self.tiles[i][3] = 1
 	end
 
+	self.tiles[0][height] = 1
+	self.tiles[width][height] = 1
+
 	self.tiles.wall = love.graphics.newImage("assets/basic-tile.png")
 	self.tiles.block = love.graphics.newImage("assets/basic-block.png")
 
