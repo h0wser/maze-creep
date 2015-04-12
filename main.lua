@@ -14,7 +14,20 @@ function love.load()
 	font = love.graphics.newFont("assets/Kubasta.ttf", 30)
 	love.graphics.setFont(font)
 
-	canvas = love.graphics.newCanvas(360, 240)
+	backgroundCanvas = love.graphics.newCanvas(368, 240)
+
+	background = love.graphics.newImage("assets/ground.png")
+	love.graphics.setCanvas(backgroundCanvas)
+	
+	for x=0, 6 do
+		for y=0, 4 do
+			love.graphics.draw(background, x*64, y*64)
+		end
+	end
+
+	love.graphics.setCanvas()
+
+	canvas = love.graphics.newCanvas(368, 240)
 
 	player = Player.new()
 	player.pos.x = 200
@@ -30,6 +43,7 @@ function love.draw()
 
 	love.graphics.setCanvas(canvas)
 		canvas:clear()
+		love.graphics.draw(backgroundCanvas)
 		map:draw()
 		player:draw()
 	love.graphics.setCanvas()

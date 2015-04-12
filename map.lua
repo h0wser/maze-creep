@@ -17,11 +17,11 @@ function Map.new(width, height)
 	end
 
 	for i=0, height do
-		self.tiles[0][i] = 1
-		self.tiles[width][i] = 1
+		self.tiles[0][i] = 2
+		self.tiles[width][i] = 2
 	end
 
-	for i=0, width do
+	for i=1, width-1 do
 		self.tiles[i][0] = 1
 		self.tiles[i][height] = 1
 	end
@@ -30,7 +30,8 @@ function Map.new(width, height)
 		self.tiles[i][3] = 1
 	end
 
-	self.tileImage= love.graphics.newImage("assets/basic-tile.png")
+	self.tiles.wall = love.graphics.newImage("assets/basic-tile.png")
+	self.tiles.block = love.graphics.newImage("assets/basic-block.png")
 
 	return self
 end
@@ -45,7 +46,9 @@ function Map:draw()
 	for x=0, self.width do
 		for y=0, self.height do
 			if self.tiles[x][y] == 1 then
-				love.graphics.draw(self.tileImage, x * 16, y * 16)
+				love.graphics.draw(self.tiles.wall, x * 16, y * 16)
+			elseif self.tiles[x][y] == 2 then
+				love.graphics.draw(self.tiles.block, x * 16, y * 16)
 			end
 		end
 	end
